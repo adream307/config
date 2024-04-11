@@ -2,7 +2,7 @@ set nocompatible
 set backspace=indent,eol,start
 set number
 set nowrap
-set updatetime=100
+set updatetime=300
 "set mouse=a       " Enable mouse (esp. for balloons and scrolling in popups)
 "set ttymouse=sgr  " .. also in 'terminals that emit SGR-styled mouse reporting'
 
@@ -10,10 +10,17 @@ set foldmethod=indent
 set foldlevel=99
 "set foldopen=all
 
+set pastetoggle=<C-P>
+nnoremap <C-N> :set invnumber<CR>
+nnoremap <S-V> :set invcursorline<CR>
+
+
 syntax on
 
 "" autocmd
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+au BufRead,BufNewFile *.v,*.vh,*.sv set filetype=systemverilog
 
 set expandtab
 set tabstop=4
@@ -93,6 +100,8 @@ noremap <Leader>p  "+p
 nnoremap yw yiw
 nnoremap wp viw"0p
 nnoremap dw diw
+nnoremap de d$
+nnoremap ds :%s/\s*$//g<cr>
 
 "" yank text in normal mode and paste in commnad line
 "" <C-R>"
