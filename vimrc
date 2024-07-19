@@ -36,6 +36,7 @@ set nobackup
 set nowb
 set noswapfile
 colorscheme darkblue
+"set background=light
 
 
 "" example of use grep vim
@@ -130,6 +131,9 @@ set undodir =$HOME."/.vim/undodir"
 set splitright
 let g:termdebug_wide=1
 packadd termdebug
+"debug for rust
+"let g:termdebugger="rust-gdb"
+
 
 command! -nargs=0 Bash vert term zsh
 
@@ -261,6 +265,25 @@ if executable('ccls')
       \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cu'],
       \ })
 endif
+
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
+        \   'initialization_options': {
+        \     'cargo': {
+        \       'buildScripts': {
+        \         'enable': v:true,
+        \       },
+        \     },
+        \     'procMacro': {
+        \       'enable': v:true,
+        \     },
+        \   },
+        \ })
+endif
+
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
