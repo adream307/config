@@ -302,5 +302,8 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
+"json format
+command! -nargs=0 Json %!python3 -m json.tool
+
 "gdb debug
 command! -nargs=* DebugT TermdebugCommand t <args>
