@@ -305,13 +305,15 @@ function! s:on_lsp_buffer_enabled() abort
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    "let g:lsp_format_sync_timeout = 1000
+    "autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
     "let g:lsp_log_verbose = 1
     "let g:lsp_log_file = expand('~/vim-lsp.log')
 
     " refer to doc to add more commands
 endfunction
+
+autocmd FileType rust,go nnoremap <buffer><Leader>cf :LspDocumentFormat<CR>
 
 augroup lsp_install
     au!
