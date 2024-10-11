@@ -168,7 +168,7 @@ call plug#end()
 "let g:clang_format#command = $HOME."/bin/clang-format"
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-autocmd FileType c,cpp,objc ClangFormatAutoEnable 
+"autocmd FileType c,cpp,objc ClangFormatAutoEnable 
 let g:clang_format#detect_style_file = 1
 
 let g:Lf_ShowDevIcons = 0
