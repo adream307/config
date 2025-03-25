@@ -1,0 +1,2 @@
+- https://gitee.com/harmonyos_samples/ndk-opengl
+- https://gitee.com/openharmony/applications_app_samples/
